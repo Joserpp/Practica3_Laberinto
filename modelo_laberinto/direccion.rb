@@ -13,3 +13,6 @@ end
 Lista_direcciones=Array["NORTE", "SUR", "ESTE", "OESTE"]
 
 end
+
+
+Lista_direcciones=Array["NORTE","SUR","ESTE","OESTE"]
