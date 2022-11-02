@@ -1,3 +1,7 @@
+require_relative 'controlador_laberinto/Controlador'
+require_relative 'controlador_laberinto/Estado_juego'
+require_relative 'modelo_laberinto/laberinto'
+
 class Vista_laberinto
 
     def initialize(controlador)
@@ -8,7 +12,7 @@ class Vista_laberinto
         estado=@controlador.estado
         
         case estado
-            when Estado_juego::EN_ENTRADA_LABERINTO
+            when Controlador_laberinto::Estado_juego::EN_ENTRADA_LABERINTO
                 puts "Estamos fuera del laberinto y vivos"
 
                 puts "Introducta el numero de vidas"
@@ -21,7 +25,7 @@ class Vista_laberinto
                 puts "El número de vidas es: " + vidas
                 @controlador.entrar(vidas.to_i)
                 
-            when Estado_juego::DENTRO_VIVO
+            when Controlador_laberinto::Estado_juego::DENTRO_VIVO
 
                 puts informe_dentro(@controlador.habitacion_usuario,@controlador.vidas)
 
@@ -31,15 +35,15 @@ class Vista_laberinto
                 
                 puts "Se ha movido hacia: " + Lista_direcciones[movimiento]
 
-            when Estado_juego::EN_SALIDA_LABERINTO
+            when Controlador_laberinto::Estado_juego::EN_SALIDA_LABERINTO
                 puts informe_final(@controlador.vidas)
                 exit 0
             
-            when Estado_juego::DENTRO_MUERTO
+            when Controlador_laberinto::Estado_juego::DENTRO_MUERTO
                 puts informe_final(@controlador.vidas)
                 exit 0
         end
-        menu_usuario
+        # menu_usuario
     end
 
     def informe_dentro(habitacion,vidas)

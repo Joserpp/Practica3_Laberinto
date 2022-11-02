@@ -1,13 +1,13 @@
 module Controlador_laberinto
 
     class Controlador
-        include Modelo_laberinto
+        require_relative '../modelo_laberinto/laberinto'
 
         def initialize(modelo)
             @modelo = modelo
             @vidas = 0
-            @estado=null
-            @habitacion_usuario=Habitacion.new
+            @estado=nil
+            @habitacion_usuario=nil
         end
 
         def entrar(vidas)
@@ -28,7 +28,6 @@ module Controlador_laberinto
                 if(@habitacion_usuario == nil)
                     @estado = Estado_juego::EN_SALIDA_LABERINTO
                 end
-            end
             else
                 @vidas -= 1
                 if(@vidas < 1)

@@ -2,7 +2,9 @@
 # To change this license header, choose License Headers in Project Properties.
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
-
+require_relative 'controlador_laberinto/Controlador'
+require_relative 'controlador_laberinto/Estado_juego'
+require_relative 'modelo_laberinto/laberinto'
 
 class Vista2_laberinto
   
@@ -23,7 +25,7 @@ class Vista2_laberinto
 		values=[*1..10].map!(&:to_s)
 	
 		case estado
-			when Estado_juego::EN_ENTRADA_LABERINTO
+			when Controlador_laberinto::Estado_juego::EN_ENTRADA_LABERINTO
 			
 				puts laberinto(!@@DENTRO, @@VIVO) # dentro y vivo
 				puts usuario_en_entrada
@@ -39,7 +41,7 @@ class Vista2_laberinto
 				@controlador.entrar(st.to_i)
 			
 			
-			when Estado_juego::DENTRO_VIVO
+			when Controlador_laberinto::Estado_juego::DENTRO_VIVO
 				puts laberinto(true, true)
 			
 				puts "Pulse una tecla"
@@ -47,16 +49,16 @@ class Vista2_laberinto
 				@movimiento=@controlador.intentar_avanzar()
 			
 			
-			when Estado_juego::EN_SALIDA_LABERINTO
+			when Controlador_laberinto::Estado_juego::EN_SALIDA_LABERINTO
 				puts usuario_en_salida
 				puts laberinto(false, true)
 				exit 0
 			
-			when Estado_juego::DENTRO_MUERTO
+			when Controlador_laberinto::Estado_juego::DENTRO_MUERTO
 				puts laberinto(true, false)
 				exit 0
 		end
-		menu_usuario
+		# menu_usuario
 	end
   
 	def  vidas(total_vidas)
