@@ -16,6 +16,7 @@ class Laberinto
     def initialize
       @puerta_entrada=nil
       @puerta_salida=nil
+      @habitaciones
       crear_habitaciones
       add_paredes
       add_puertas
@@ -82,10 +83,3 @@ class Laberinto
     
 
 end
-
-def prueba
-  lab=Laberinto.new()
-  puts lab
-end
-
-prueba

@@ -2,9 +2,6 @@
 # To change this license header, choose License Headers in Project Properties.
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
-require_relative 'controlador_laberinto/Controlador'
-require_relative 'controlador_laberinto/Estado_juego'
-require_relative 'modelo_laberinto/laberinto'
 
 class Vista2_laberinto
   
@@ -20,13 +17,12 @@ class Vista2_laberinto
    
   
 	def menu_usuario()
-		
 		estado=@controlador.estado
 		values=[*1..10].map!(&:to_s)
 	
 		case estado
-			when Controlador_laberinto::Estado_juego::EN_ENTRADA_LABERINTO
 			
+			when Controlador_laberinto::Estado_juego::EN_ENTRADA_LABERINTO
 				puts laberinto(!@@DENTRO, @@VIVO) # dentro y vivo
 				puts usuario_en_entrada
 				
@@ -58,7 +54,7 @@ class Vista2_laberinto
 				puts laberinto(true, false)
 				exit 0
 		end
-		# menu_usuario
+		menu_usuario
 	end
   
 	def  vidas(total_vidas)
@@ -150,7 +146,7 @@ class Vista2_laberinto
 		st=extremo_laberinto (@modelo.puerta_salida)
 		st=st+"╔═";
 		for hab in @modelo.habitaciones
-			sep=hab.get_lado(Direccion::NORTE)
+			sep=hab.get_lado(Modelo_laberinto::Direccion::NORTE)
 			if (sep!=nil && sep.tipo==Tipo_separacion::PUERTA)
 				st=st+puerta
 			else
@@ -169,7 +165,7 @@ class Vista2_laberinto
    
 		st="╚═";
 		for hab in @modelo.habitaciones
-			sep=hab.get_lado(Direccion::SUR)
+			sep=hab.get_lado(Modelo_laberinto::Direccion::SUR)
 			if (sep!=nil && sep.tipo==Tipo_separacion::PUERTA)
 				st=st+puerta
 			else
@@ -189,7 +185,7 @@ class Vista2_laberinto
     def interior_habitaciones(usuario)
       	st=""
       	for hab in @modelo.habitaciones
-        	sep=hab.get_lado(Direccion::OESTE)
+        	sep=hab.get_lado(Modelo_laberinto::Direccion::OESTE)
         	if (sep!=nil && sep.tipo==Tipo_separacion::PUERTA)
           		st=st+puerta
         	else

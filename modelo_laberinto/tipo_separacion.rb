@@ -7,7 +7,7 @@
  PARED = 0
  PUERTA = 1
   end
- #Lista_Tipo_separacion = [Tipo_separacion::PARED, Tipo_separacion::PUERTA]
+ Lista_Tipo_separacion = [Tipo_separacion::PARED, Tipo_separacion::PUERTA]
     
    
     
