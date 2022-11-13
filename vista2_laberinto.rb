@@ -22,7 +22,8 @@ class Vista2_laberinto
 	
 		case estado
 			
-			when Controlador_laberinto::Estado_juego::EN_ENTRADA_LABERINTO
+			#when Controlador_laberinto::Estado_juego::EN_ENTRADA_LABERINTO
+		    when Estado_juego::EN_ENTRADA_LABERINTO
 				puts laberinto(!@@DENTRO, @@VIVO) # dentro y vivo
 				puts usuario_en_entrada
 				
